@@ -1,0 +1,47 @@
+.icon {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1rem;
+
+  a.nav-link {
+    flex-direction: column;
+    height: fit-content;
+    text-align: center;
+    padding: 0;
+    margin: 1rem;
+    color: #999;
+    font-size: 0.8rem;
+    &:hover {
+      background: none;
+    }
+
+    .nav-link-text {
+      color: #999;
+      font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+    .nav-link-icon {
+      color: black;
+      font-size: 1.5rem;
+      margin-left: 0;
+      margin-bottom: 0.5rem;
+    }
+  }
+  .active {
+    background: none;
+  }
+}
+
+.side-menu {
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+  background: #f9f9f9;
+  padding: 1rem;
+  position: relative;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}

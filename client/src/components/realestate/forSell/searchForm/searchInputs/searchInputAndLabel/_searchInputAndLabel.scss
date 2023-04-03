@@ -1,0 +1,14 @@
+.search-block__input-and-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 61px;
+    font-size: 0.9rem;
+
+    input {
+        height: 40px;
+        padding: 10px;
+        border: 1px solid #d5d5d5;
+        outline: none;
+    }
+}

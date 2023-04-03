@@ -1,0 +1,33 @@
+@import './assetsList/assetsList';
+@import './searchForm/searchForm';
+@import './pagination/pagination';
+@import './assetsSortFilter/assetsSortFilter';
+@import './assetsList/assetAd/assetInfo/descriptionContainer/descriptionContainer';
+
+.forsell-page {
+  background: #f9f9f9;
+  min-height: calc(100vh + 4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+  box-shadow: inset 0 3px 5px 3px rgba(0, 0, 0, 0.1);
+  gap: 2rem;
+  height: fit-content;
+  @media (max-width: 880px) {
+    padding: 0;
+  }
+  .page-title {
+    display: flex;
+    font-weight: 500;
+    width: 100%;
+    padding: 0.5rem;
+    gap: 0.2rem;
+        max-width: 55rem;
+
+    span:last-child {
+      color: #999999;
+      font-weight: 400;
+    }
+  }
+}

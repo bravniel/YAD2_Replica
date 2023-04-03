@@ -1,0 +1,46 @@
+@import './categoryItemModal/categoryItemModal';
+
+.publish-section-item {
+  padding: 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #ffffff;
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 7px;
+width: 100%;
+  .publish-section-subTitle {
+    color: #808080;
+    font-size: 0.9rem;
+  }
+
+  .publish-section-icon {
+    font-size: 4.5rem;
+  }
+
+  .publish-section-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  &:hover {
+    .publish-section-icon {
+      color: $myOrange;
+    }
+    cursor: pointer;
+  }
+  .start-btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: $myOrange;
+    border: none;
+    border-radius: 2rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

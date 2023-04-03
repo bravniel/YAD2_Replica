@@ -1,0 +1,130 @@
+@import './publishCategory/publishCategory';
+@import './publishAddress/publishAddress';
+@import './publishProps/publishProps';
+@import './publishPriceSizeDate/publishPriceSizeDate';
+@import './publishPicturesVideos/publishPicturesVideos';
+@import './publishContact/publishContact';
+@import './publishTrack/publishTrack';
+
+.publish-realestate-container {
+  background-color: #f9f9f9;
+  height: calc(100% - 4rem);
+  min-height: calc(100vh - 4rem);
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+  gap: 2rem;
+  align-items: center;
+}
+
+.new-ad-step {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 5px 8px 1px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e6e6e6;
+  max-width: 55rem;
+  width:100%;
+  padding: 1rem;
+  border: none;
+//   @media (max-width: 880px) {
+//     width: 100%;
+//   }
+}
+.inactive {
+  color: #acacac;
+  background-color: #f9f9f9;
+  border: 1px solid #e6e6e6;
+  .new-ad-step-top-row {
+    .step-number {
+      color: #999;
+      border: 2px solid #ccc;
+    }
+  }
+}
+
+.new-ad-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 0 3rem;
+  width: 100%;
+  @media (max-width: 680px) {
+    padding: 0;
+  }
+}
+
+// .publish-realestate-container{
+//     max-width: 900px;
+//     margin: 70px auto;
+
+//     .publish-realestate-section-card{
+//         padding: 30px 0 30px 0; margin-bottom: 25px;
+//         background-color: #FFFFFF;
+//         border-radius: 3px;
+//         box-shadow: 0 2px 4px 0 rgb(12 0 51 / 20%);
+//     }
+
+//     .inactive-publish-realestate-section-card{ background: transparent; color: #acacac; }
+
+//     .publish-realestate-form-card{
+//         padding: 0 45px 0 45px; margin-top: 40px;
+
+//         form{
+//             .publish-form-div-wrapper{
+//                 width: 250px; margin: 20px 0 20px 0;
+//                 display: flex; flex-flow: column;
+
+//                 @media(max-width: 600px) { width: 100%;}
+
+//                 label{ margin-bottom: 7px;}
+//                 div{
+//                     position: relative;
+//                     .input-icon{
+//                         position: absolute; top: 50%; left: 5px; transform: translateY(-50%); font-size: 1.25rem;
+//                         &:hover{cursor: pointer;}
+//                     }
+//                 }
+//                 input{
+//                     height: 40px; width: 100%; padding-right: 10px;
+//                     border: 1px solid #ccc; border-radius: 3px;
+//                     box-sizing: border-box;
+//                 }
+//             }
+
+//             .publish-buttons-wrapper{
+//                 margin-top: 25px;
+//                 display: flex; justify-content: space-between;
+//                 span{
+//                     padding: 10px 25px;
+//                     border: 1px solid #ccc; border-radius: 25px;
+
+//                     &:hover{ cursor: pointer; color: #FFFFFF; background-color: $main-orange;}
+//                 }
+
+//                 button{
+//                     padding: 10px 25px;
+//                     font-weight: bold;
+//                     color: $main-orange; background-color: #FFFFFF;
+//                     border: 1px solid $main-orange; border-radius: 25px;
+//                     white-space: nowrap;
+
+//                     &:hover{ cursor: pointer; color: #FFFFFF; background-color: $main-orange;}
+//                 }
+//             }
+//         }
+
+//         select{
+//             height: 40px; padding: 7px;
+//             border: 1px solid #ccc; border-radius: 3px;
+//             cursor: pointer;
+//         }
+
+//         .span-notes{ margin-top: 3px; font-size: .65rem; }
+//         .error-msg{ color: red; font-size: .85rem;}
+//     }
+// }

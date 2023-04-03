@@ -1,0 +1,27 @@
+#payments-and-more-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .date-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  .date-container-check-box {
+    position: relative;
+    top: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  ::-webkit-datetime-edit {
+    padding: 1em;
+    text-align: end;
+  }
+
+  ::-webkit-datetime-edit-text {
+    padding: 0 0.3em;
+  }
+}

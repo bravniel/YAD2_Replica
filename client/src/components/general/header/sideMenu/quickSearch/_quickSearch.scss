@@ -1,0 +1,41 @@
+.quick-search {
+  background-color: rgb(240, 240, 240);
+  width: 108%;
+  padding: 1rem 2rem;
+
+  a.nav-link {
+    height: fit-content;
+    text-align: center;
+    padding: 0;
+    margin: 1rem;
+    color: black;
+    position: relative;
+
+    &:hover {
+      background: none;
+    }
+
+    .nav-link-text {
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      font-weight: 500;
+    }
+
+    .nav-link-icon {
+      color: black;
+      margin-left: 1.5rem;
+    }
+  }
+
+  .active {
+    background: none;
+  }
+}
+
+.title {
+  color: #999;
+  font-size: 1rem;
+  margin-right: 1rem;
+}

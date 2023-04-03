@@ -1,0 +1,14 @@
+
+  .publish-middle-section {
+  grid-area: 'row2';
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 1rem;
+  @media (max-width: 620px) {
+    // grid-template-columns: 1fr 1fr;
+    // grid-template-rows: repeat(6, 9.5rem);
+    // grid-row-gap: 1.5rem;
+    // grid-area: 'main';
+    // grid-template-columns: repeat(2, 1fr);
+  }
+  }

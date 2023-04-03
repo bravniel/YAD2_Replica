@@ -1,0 +1,67 @@
+.form-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  gap: 0.5rem;
+  position: relative;
+  margin: 1rem 0;
+
+  span {
+    color: #363636;
+  }
+
+  input {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #36363643;
+    border-radius: 3px;
+
+    &:hover,
+    &:focus {
+      border: 1px solid black;
+      outline: none;
+    }
+    &::placeholder {
+      color: #36363672;
+    }
+  }
+
+  .input-clear-icon {
+    position: absolute;
+    left: 1rem;
+    top: 2.6rem;
+    font-size: 1.6rem;
+    color: #36363661;
+    &:hover {
+      cursor: pointer;
+      color: black;
+    }
+  }
+
+  .password-eye-icon {
+    position: absolute;
+    left: 1rem;
+    top: 2.9rem;
+    font-size: 1.25rem;
+    color: #36363672;
+    &:hover {
+      cursor: pointer;
+      color: black;
+    }
+  }
+
+  .invalid-message {
+    color: $myRed;
+    font-size: 0.75rem;
+  }
+
+  .input-invalid {
+    border: 1px solid $myRed;
+    &:hover,
+    &:focus {
+    border: 1px solid $myRed;
+      outline: none;
+    }
+  }
+}

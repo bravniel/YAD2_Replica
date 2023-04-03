@@ -1,0 +1,49 @@
+.category-navigation {
+  width: 108%;
+  padding: 1rem 0 0.5rem 0;
+  a.nav-link {
+    height: fit-content;
+    padding: 1rem;
+    color: black;
+    width: 100%;
+    border-bottom: 0.1rem solid #eee;
+
+    &:hover {
+      background: none;
+    }
+
+    .nav-link-text {
+      font-size: 1rem;
+      font-weight: 400;
+      margin-right: 2rem;
+    }
+
+    .nav-link-icon {
+      color: black;
+      margin-left: 0;
+    }
+  }
+
+  .active {
+    background: none;
+  }
+  .nav-bar {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+
+    .nav-bar-item {
+      list-style: none;
+      height: fit-content;
+      display: flex;
+      width: 100%;
+      position: relative;
+    }
+  }
+
+  .title {
+    color: #999;
+    font-size: 1rem;
+    margin-right: 3rem;
+  }
+}

@@ -1,0 +1,39 @@
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 4rem;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 1rem;
+  width: max-content;
+  .active {
+    background: none;
+    &:hover .nav-link-item {
+      color: rgb(255, 111, 0);
+    }
+  }
+
+  .nav-link:hover {
+    background: none;
+    font-weight: 700;
+    color: rgb(255, 111, 0);
+    .nav-link-icon {
+      color: black;
+    }
+  }
+  a.nav-link {
+    height: max-content;
+    width: 100%;
+  }
+}
+
+.nav-bar-item:hover .dropdown-content {
+  display: flex;
+  gap: 1rem;
+}
+
+.clicked {
+  display: none;
+}

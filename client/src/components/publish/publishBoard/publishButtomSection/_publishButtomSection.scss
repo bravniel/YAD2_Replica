@@ -1,0 +1,18 @@
+.publish-buttom-section {
+  grid-area: 'row3';
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 1rem;
+  @media (max-width: 620px) {
+    // grid-template-columns: 1fr 1fr;
+    // grid-template-rows: repeat(6, 9.5rem);
+    // grid-row-gap: 1.5rem;
+    // grid-area: 'main';
+    // grid-template-columns: repeat(1, 1fr);
+  }
+    .publish-section-item {
+    &:hover {
+      border: 1px solid black
+    }
+  }
+}

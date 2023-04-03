@@ -1,0 +1,37 @@
+@import '../../dropdownMenu/dropdownMenu';
+.burger-button {
+display: flex;
+align-items: center;
+background: none;
+border: none;
+gap:0.5rem;
+color: #606060;
+font-size: 1.5rem;
+height: 100%;
+padding: 0;
+.burger-icon{
+    font-size: 1.5rem;
+}
+&:hover{
+    cursor: pointer;
+}
+}
+
+
+.nav-bar{
+    display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        height: 100%;
+    .nav-bar-item{
+list-style: none;
+position: relative;
+height: 100%;
+display: flex;
+&:hover{
+    background-color: #f9f9f9;
+}
+    }
+}
+

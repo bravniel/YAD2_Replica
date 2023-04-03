@@ -1,0 +1,44 @@
+.pick-attribute-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  span {
+    font-weight: 600;
+  }
+  .pick-attribute-box-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 1rem;
+    .toggle-attribute-button {
+      display: flex;
+      align-items: center;
+      gap: 0.1rem;
+      border: 1px solid $myGreyBorder;
+      border-radius: 2rem;
+      width: 8rem;
+      height: 2rem;
+      padding: 10px;
+      cursor: pointer;
+      user-select: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      .attribute-icon {
+        font-size: 1.5rem;
+      }
+      &:hover {
+        color: $myOrange;
+      }
+
+      &.active {
+        color: #000000;
+        background: $myGreyBorder;
+
+        &:hover {
+          background: $myGrey;
+        }
+      }
+    }
+  }
+}

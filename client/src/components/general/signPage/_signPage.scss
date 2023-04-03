@@ -1,0 +1,58 @@
+@import './signHeader/signHeader';
+@import './signAbilities/signAbilities';
+@import './signForm/formButton/formButton';
+@import './signForm/formCheckBox/formCheckBox';
+@import './signForm/formInput/formInput';
+@import './signForm/formSignOptions/formSignOptions';
+
+.sign-page {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #fff8ef;
+  padding-bottom: 1rem;
+  .sign-body {
+      height: calc(100% - 7rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 2rem;
+    @media (max-width: 900px) {
+        height: 100vh;
+        padding: 0;
+      }
+    .sign-container {
+      width: 90%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 100%;
+
+      @media (max-width: 900px) {
+        width: 100%;
+        height: 100vh;
+        padding: 0;
+      }
+
+      .sign-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        justify-content: center;
+        width: 50%;
+        background-color: #ffffff;
+        color: black;
+        border-radius: 0.5rem;
+        box-shadow: 0 3px 10px 0 rgb(0 0 0 / 10%);
+        padding: 1rem;
+        form {
+          width: 100%;
+        }
+        @media (max-width: 900px) {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}

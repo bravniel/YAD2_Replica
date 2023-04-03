@@ -1,0 +1,52 @@
+.utils-container {
+  width: 100%;
+  padding: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #e5e5e5;
+
+  @media (max-width: 600px) {
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 2rem;
+  }
+
+  .contact-icons-container {
+    font-size: 1.25rem;
+    display: flex;
+    gap: 1rem;
+
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #eeeeee;
+      border-radius: 50%;
+      padding: 5px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .commerical-info-error-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    .error {
+      font-weight: 500;
+      font-size: 0.8rem;
+      color: #4e4e4e;
+      &:hover {
+        cursor: pointer;
+        color: $myOrange;
+      }
+    }
+
+    .info {
+      font-size: 0.8rem;
+    }
+  }
+}

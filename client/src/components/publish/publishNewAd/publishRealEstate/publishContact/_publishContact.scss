@@ -1,0 +1,32 @@
+#contact-details-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  .horizontal-line {
+    width: 16rem;
+    border-top: 1px solid $myGreyBorder;
+    @media (max-width: 680px) {
+      width: 100%;
+    }
+  }
+  .add-contact {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    color: $myOrange;
+    svg {
+      font-size: 1.2rem;
+    }
+  }
+  .new-ad-step-buttons {
+  justify-content: flex-end;
+  .step-button {
+    &:hover {
+      color: $myOrange;
+      background: none;
+    }
+  }
+}
+
+}

@@ -1,0 +1,51 @@
+.form-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width:100%;
+  padding: 1rem;
+
+  @media (max-width: 950px) {
+    flex-flow: column;
+    flex-direction: column-reverse;
+  }
+
+  .form-title {
+    margin: 0;
+    font-size: 1.15rem;
+text-align: start;
+    font-weight: 500;
+
+    span {
+      color: $myOrange;
+      border-bottom: 2px dotted $myOrange;
+      font-size: 1.15rem;
+          font-weight: 500;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .mail-notification-button {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border: 1px solid $myOrange;
+    color: $myOrange;
+    font-weight: 500;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    gap:0.5rem;
+    &:hover {
+      color: #ffffff;
+      background-color: $myOrange;
+      cursor: pointer;
+    }
+
+    .bell-icon {
+      font-size: 1.15rem;
+    }
+  }
+}

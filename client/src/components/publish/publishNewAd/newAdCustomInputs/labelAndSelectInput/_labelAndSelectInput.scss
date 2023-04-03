@@ -1,0 +1,24 @@
+.label-and-select-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  justify-content: center;
+  select {
+    height: 2.5rem;
+    width: 16rem;
+    border: 1px solid $myGreyBorder;
+    border-radius: 5px;
+    padding: 0.5rem;
+    @media (max-width: 680px) {
+      width: 100%;
+    }
+  }
+
+  option {
+    padding: 0.1rem;
+  }
+
+  .invalid-select {
+    border: 1px solid #C00;
+  }
+}

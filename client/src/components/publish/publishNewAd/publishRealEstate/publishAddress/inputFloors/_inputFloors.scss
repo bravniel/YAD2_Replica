@@ -1,0 +1,17 @@
+.input-floors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: flex-start;
+
+  .input-floors-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    justify-content: center;
+  }
+  .input-floors-check-box {
+    position: relative;
+    top: 2.5rem;
+  }
+}

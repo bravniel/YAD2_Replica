@@ -1,0 +1,9 @@
+@import "./noneToThreePicker/noneToThreePicker";
+@import "./pickAttributesBox/pickAttributesBox";
+@import "./assetDescription/assetDescription";
+
+#about-asset-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

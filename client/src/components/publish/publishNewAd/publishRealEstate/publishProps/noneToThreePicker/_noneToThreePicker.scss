@@ -1,0 +1,50 @@
+.none-to-three-picker{
+    display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  justify-content: center;
+}
+.picker-wrapper {
+  height: 2.5rem;
+  width: 16rem;
+  border: 1px solid $myGrey;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  @media (max-width: 680px) {
+    width: 100%;
+  }
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-left: 1px solid $myGrey;
+    height: 100%;
+
+    &:hover {
+      color: $myOrange;
+    }
+
+    &.active {
+      color: #000000;
+      background: $myGreyBorder;
+
+      &:hover {
+        background: $myGrey;
+      }
+    }
+
+    &:last-child {
+      border-left: none;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+
+    &:first-child {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+  }
+}

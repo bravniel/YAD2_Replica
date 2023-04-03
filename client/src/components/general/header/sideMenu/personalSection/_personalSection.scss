@@ -1,0 +1,50 @@
+.personal {
+  a.nav-link {
+    height: 5rem;
+    text-align: center;
+    padding: 0;
+    margin: 0.5rem;
+    color: black;
+    position: relative;
+    &:hover {
+      background: none;
+    }
+
+    .nav-link-text {
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+
+    .nav-link-icon {
+      color: black;
+      font-size: 1rem;
+      margin-left: 0;
+    }
+  }
+
+  .active {
+    background: none;
+  }
+
+  a.me {
+    color: black;
+    position: absolute;
+    top: 3rem;
+    left: 1rem;
+    height: 1rem;
+  }
+}
+.sign-out {
+  position: absolute;
+  top: 0;
+  left: 0;
+  a.nav-link {
+    padding: 0.5rem;
+  }
+  .nav-link-text {
+    color: #999;
+    font-size: 1rem;
+  }
+}

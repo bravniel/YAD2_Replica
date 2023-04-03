@@ -1,0 +1,19 @@
+.sign-up-link {
+  text-align: center;
+
+  span {
+    margin-right: 5px;
+    color: $myOrange;
+    font-weight: bold;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.form-title{
+    text-align: center;
+    font-size: 2rem;
+    width: 100%;
+    font-weight: 400;
+}

@@ -1,0 +1,55 @@
+@import './trackItemForm/trackItemForm';
+#track-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  .horizontal-line {
+    width: 100%;
+    border-top: 1px solid $myGreyBorder;
+    @media (max-width: 680px) {
+      width: 100%;
+    }
+  }
+  .bold {
+    font-weight: 600;
+  }
+  .yellow-mark {
+    background-color: #fdf9c4;
+    padding: 0.2rem 0.5rem;
+  }
+  .number-of-ads-container {
+    display: flex;
+    padding: 0.2rem 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 3rem;
+    background-color: #f9f7f7;
+    border: 1px solid $myGreyBorder;
+  }
+  .blue {
+    color: #17739a;
+    font-weight: 600;
+  }
+  .span-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 300;
+    .bit-img {
+      height: 1.1rem;
+      width: 2rem;
+    }
+    .rocket-ship-img {
+      height: 5rem;
+      width: 5rem;
+    }
+  }
+  .track-options-container{
+     display: flex;
+     flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+}

@@ -1,0 +1,42 @@
+.form-sign-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  .form-sign-options-container {
+    color: #ccc;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    .line {
+      width: 100%;
+      border: 1px solid #eeeeee;
+    }
+    span {
+      width: fit-content;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+  }
+  .form-button {
+    background-color: #ffffff;
+    color: black;
+    border: 1px solid #cccccc;
+    margin-bottom: 1rem;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    &:hover {
+        :first-child{
+        color: black;
+      }
+      cursor: pointer;
+      background-color: #ffffff;
+      border: 1px solid $myOrange;
+      color: $myOrange;
+    }
+  }
+}

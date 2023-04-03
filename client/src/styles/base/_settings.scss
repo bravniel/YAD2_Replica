@@ -1,0 +1,88 @@
+* {
+    box-sizing: border-box;
+    font-family: $main-font;
+    margin: 0;
+    direction: rtl;
+    font-size: 16px;
+    // color: $main-font-color;
+}
+
+// .flex-column {
+//     display: flex;
+//     flex-direction: column;
+// }
+
+// .flex-row {
+//     display: flex;
+//     flex-direction: row;
+//     flex-wrap: wrap;
+// }
+
+// .flex-row-align-end {
+//     display: flex;
+//     flex-direction: row;
+//     align-items: flex-end;
+// }
+
+// .flex-row-end {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: flex-end;
+// }
+
+// .flex-row-center {
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+// }
+
+// .padding-50px-horizontal {
+//     padding: 0 50px;
+// }
+
+// .oval-border-button {
+//     padding: 10px 30px;
+//     width: fit-content;
+//     border-radius: 9999px;
+//     background: none;
+//     border: 1px solid $myGreyBorder;
+//     font-size: 1.1rem;
+//     font-size: smaller;
+//     cursor: pointer;
+
+//     &.orange-button {
+//         border: 1px solid $myOrange;
+//         color: $myOrange;
+//     }
+
+//     &:hover {
+//         color: #ffffff;
+//         background: $myOrange;
+//     }
+// }
+
+// .flex-between {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+// }
+
+// .margin-top-30px {
+//     margin-top: 30px;
+// }
+
+// .color-orange {
+//     color: $myOrange;
+// }
+
+// .checkbox {
+//     height: 20px;
+//     width: 20px;
+//     margin: 20px 10px;
+//     background: $myOrange;
+//     filter: hue-rotate(155deg);
+// }
+
+// .cursor-pointer {
+//     cursor: pointer;
+// }

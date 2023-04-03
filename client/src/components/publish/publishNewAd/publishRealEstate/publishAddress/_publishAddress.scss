@@ -1,0 +1,23 @@
+@import './inputFloors/inputFloors';
+#asset-address-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+
+  #region-of-sale-label {
+    margin-top: 20px;
+  }
+
+  .span {
+    width: 16rem;
+    font-size: 0.7rem;
+  }
+  .orange {
+    color: $myOrange;
+    font-size: 0.9rem;
+  }
+  .disabled {
+    color: #ccc;
+  }
+}

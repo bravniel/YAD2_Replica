@@ -1,0 +1,56 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  max-width: 55rem;
+  width: 100%;
+  padding: 1rem;
+  background-color: #fff;
+
+  div {
+    display: flex;
+    padding: 0.3rem 0.5rem;
+    border-radius: 3px;
+    // font-weight: 500;
+    font-size: 0.9rem;
+    &:hover {
+      background-color: #fef1e5;
+      cursor: pointer;
+    }
+  }
+  .active {
+    background-color: #fef1e5;
+    color: $myOrange;
+    font-weight: 500;
+  }
+
+  button {
+    border: none;
+    border-radius: 50px;
+    background-color: #fef1e5;
+    color: $myOrange;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    &:disabled {
+      // opacity: 0.5;
+      cursor: default;
+      background-color: #eee;
+      color: #cdcdcd;
+    }
+    span {
+      font-size: 0.9rem;
+    }
+    .previous {
+      padding: 0.5rem 0 0.5rem 0.5rem;
+    }
+    .next {
+      padding: 0.5rem 0.5rem 0.5rem 0;
+    }
+    svg {
+      font-size: 1.5rem;
+    }
+  }
+}

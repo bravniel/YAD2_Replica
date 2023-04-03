@@ -1,0 +1,16 @@
+@import './assetAd/assetAd';
+@import './assetAd/assetInfo/assetInfo';
+@import './assetAd/assetInfo/adFooter/adFooter';
+@import './assetAd/sellerDetails/sellerDetails';
+
+.assets-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 55rem;
+  width: 100%;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+

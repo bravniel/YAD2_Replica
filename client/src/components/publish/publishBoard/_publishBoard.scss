@@ -1,0 +1,39 @@
+@import './publishSectionItem/publishSectionItem';
+@import './publishTopSection/publishTopSection';
+@import './publishMiddleSection/publishMiddleSection';
+@import './publishButtomSection/publishButtomSection';
+@import './publishAllSection/publishAllSection';
+.publish-body {
+  background: #f9f9f9;
+  height: calc(100% - 4rem);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+  gap: 2rem;
+  align-items: center;
+
+  .publish-title {
+    text-align: center;
+    font-weight: 400;
+    font-size: 1.5rem;
+  }
+
+  .publish-body-wrappper {
+    padding: 0.5rem;
+    display: grid;
+    grid-template-rows: 14rem 14rem 4rem;
+    grid-row-gap: 1.5rem;
+    grid-template-areas:
+      'row1'
+      'row2'
+      'row3';
+    // @media (max-width: 620px) {
+    //   grid-template-rows: repeat(6, 5rem);
+    //   grid-row-gap: 1.5rem;
+    //   grid-template-areas: 'main';
+    //   grid-template-columns: repeat(2, 1fr);
+    //   grid-column-gap: 1rem;
+    // }
+  }
+}

@@ -1,0 +1,47 @@
+.label-and-text-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  justify-content: center;
+  position: relative;
+  input {
+    height: 2.5rem;
+    width: 16rem;
+    border: 1px solid $myGreyBorder;
+    border-radius: 5px;
+    padding: 0.5rem;
+    @media (max-width: 680px) {
+      width: 100%;
+    }
+  }
+  .disabled-input {
+    color: #ccc;
+  }
+  input.invalid-input {
+    border: 1px solid #c00;
+  }
+  .input-wrapper {
+    width: fit-content;
+    position: relative;
+    .icon-wrapper {
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+      position: absolute;
+      left: 0.1rem;
+      top: 25%;
+      .delete-icon-btn {
+        font-size: 1rem;
+        color: #36363661;
+        &:hover {
+          cursor: pointer;
+          color: black;
+        }
+      }
+      .shekel-icon {
+        font-size: 1rem;
+        color: #36363661;
+      }
+    }
+  }
+}
