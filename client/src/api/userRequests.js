@@ -41,10 +41,10 @@ export const GetSearchStates = async (form) => {
   return allAssets.data;
 };
 
-export const getRealEstates = async (searchForm, page, orderBy) => {
+export const getRealEstates = async (searchForm, page, orderBy, filterBy) => {
   const search = JSON.stringify(searchForm);
   const routeUrl = apiUrl + '/realestate/assets';
-  const params = { params: { search, page, orderBy } };
+  const params = { params: { search, page, orderBy, filterBy } };
   console.log('search',search);
   const allAssets = await axios.get(routeUrl, params);
   return allAssets.data;

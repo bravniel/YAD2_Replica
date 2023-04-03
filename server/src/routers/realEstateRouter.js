@@ -21,7 +21,6 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-
 /* Adds a realestate sell to the DB. */
 router.post('/asset', async (req, res, next) => {
   try {
@@ -59,10 +58,11 @@ router.get('/assets', async (req, res, next) => {
   const offset = (req.query.page - 1) * 5;
   const orderBy = `${req.query.orderBy}`;
   const search = JSON.parse(req.query.search);
-
+  const filterBy = req.query.filterBy;
   console.log('search', search);
   console.log('offset', offset);
   console.log('orderBy', orderBy);
+  console.log('filterBy', filterBy);
 
   let queryString = 'WHERE owner IS NOT NULL';
   if (search.city.value.length > 0)
@@ -141,6 +141,9 @@ router.get('/assets', async (req, res, next) => {
   if (search.openSearch.value.length > 0)
     queryString +=
       ` AND assetDescription LIKE N'%` + search.openSearch.value + "%'";
+  if (filterBy.withPicture == 'true')
+    queryString += ` AND imageSrcName IS NOT NULL`;
+  if (filterBy.withPrice == 'true') queryString += ` AND price IS NOT NULL`;
   console.log(
     `SELECT * FROM Property join Props on Property.propertyId = Props.propertyId ${queryString} ORDER BY ${orderBy} OFFSET ${offset} ROWS FETCH NEXT 5 ROWS ONLY;`
   );

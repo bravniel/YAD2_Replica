@@ -12,6 +12,10 @@ import SearchForm from './searchForm/SearchForm';
 export default function ForSell() {
   const [realEstates, setRealEstates] = useState([]);
   const [sort, setSort] = useState('uploadDate DESC');
+  const [filter, setFilter] = useState({
+    withPicture: false,
+    withPrice: false,
+  });
   const [form, dispatchForm] = useReducer(
     SearchFormReducer,
     searchFormInitialState
@@ -21,15 +25,19 @@ export default function ForSell() {
 
   useEffect(() => {
     getData();
-  }, [page, sort]);
+  }, [page, sort, filter]);
 
   useEffect(() => {
     console.log('form', form);
     console.log('sort', sort);
   }, [form]);
 
+  useEffect(() => {
+    console.log('filter', filter);
+  }, [filter]);
+
   function getData() {
-    getRealEstates(form, page, sort).then((data) => {
+    getRealEstates(form, page, sort, filter).then((data) => {
       console.log('data', data);
       console.log('data.data', data.data);
       console.log('data.numOfPages', data.numOfPages);
@@ -44,7 +52,12 @@ export default function ForSell() {
         <span>ראשי/</span>
         <span> נדל"ן למכירה</span>
       </div>
-      <AssetsSortFilter sort={sort} setSort={setSort} />
+      <AssetsSortFilter
+        sort={sort}
+        setSort={setSort}
+        filter={filter}
+        setFilter={setFilter}
+      />
       {realEstates.length > 0 ? (
         <AssetsList realEstates={realEstates} />
       ) : (
