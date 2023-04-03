@@ -11,6 +11,30 @@ export default function AssetAd({ asset }) {
   const [isHover, setIsHover] = useState(false);
   const [showMoreInfo, setShowMoreInfo] = useState(false);
   const todayDate = new Date().toISOString().substring(0, 10);
+
+  function convertDate(dateStr) {
+    const [year, month, day] = dateStr.split('-');
+    return `${day}/${month}/${year}`;
+  }
+
+  function converPrice(priceStr) {
+    let price = priceStr;
+    let count = 0;
+    let  finalPrice = '';
+    while (price > 0.1) {
+      const module = price % 10;
+      if (count === 3) {
+        count = 0;
+        finalPrice += ',';
+      }
+      count++;
+      finalPrice += module + '';
+      price /= 10;
+      price = parseInt(price);
+    }
+    return `${finalPrice.split('').reverse().join('')}`;
+  }
+
   return (
     <div
       className='ad-container'
@@ -69,7 +93,7 @@ export default function AssetAd({ asset }) {
         <div className='asset-left-container'>
           <div className='ad-price-and-date'>
             <div className='ad-price'>
-              {asset.price ? '\u20AA' + asset.price : 'לא צוין מחיר'}
+              {asset.price ? '\u20AA' + converPrice(asset.price) : 'לא צוין מחיר'}
             </div>
             {isHover && !showMoreInfo ? (
               <div className='click-for-details orange'>לחצו לפרטים</div>
@@ -77,7 +101,7 @@ export default function AssetAd({ asset }) {
               <div className='updated-today'>
                 {asset.uploadDate == todayDate
                   ? 'עודכן היום'
-                  : asset.uploadDate.substring(0, 10)}
+                  : convertDate(asset.uploadDate.substring(0, 10))}
               </div>
             )}
           </div>
