@@ -38,7 +38,7 @@ router.post('/asset', async (req, res, next) => {
   }
 });
 
-/* Returns the states according to the search form input. */
+/* Returns the states according to the search form input with sort and filter. */
 router.get('/assets', async (req, res, next) => {
   const offset = (req.query.page - 1) * 5;
   const orderBy = `${req.query.orderBy}`;
@@ -127,12 +127,13 @@ router.get('/assets', async (req, res, next) => {
   if (filterBy.withPrice == 'true') queryString += ` AND price IS NOT NULL`;
   try {
     const states = await sql.query(
-      `SELECT * FROM Property join Props on Property.propertyId = Props.propertyId ${queryString} ORDER BY CASE 
-    WHEN adTrack = N'בולט במיוחד' THEN 1
-    WHEN adTrack = N'בולט' THEN 2
-    WHEN adTrack = N'בסיסי' THEN 3
-    ELSE 4
-  END, adTrack, ${orderBy} OFFSET ${offset} ROWS FETCH NEXT 5 ROWS ONLY;`
+      `SELECT * FROM Property join Props on Property.propertyId = Props.propertyId ${queryString} ORDER BY
+       CASE 
+        WHEN adTrack = N'בולט במיוחד' THEN 1
+        WHEN adTrack = N'בולט' THEN 2
+        WHEN adTrack = N'בסיסי' THEN 3
+        ELSE 4
+       END, adTrack, ${orderBy} OFFSET ${offset} ROWS FETCH NEXT 5 ROWS ONLY;`
     );
     const rows = await sql.query(
       `SELECT COUNT(*) AS count FROM Property join Props on Property.propertyId = Props.propertyId ${queryString};`
@@ -143,20 +144,5 @@ router.get('/assets', async (req, res, next) => {
     return next(error);
   }
 });
-
-/* Returns a fixed number of states upon application load. */
-// router.get('/', async (req, res, next) => {
-//   try {
-//     const states = await sql.query(
-//       `SELECT * FROM Property join Props on Property.propertyId = Props.propertyId;`
-//     );
-//     const finalStates = states.recordsets[0];
-//     if (finalStates.length === 0) throw new Error('No apartments in DB.');
-//     console.log(states);
-//     res.send(states.recordset);
-//   } catch (error) {
-//     return next(error);
-//   }
-// });
 
 module.exports = router;

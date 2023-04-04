@@ -5,6 +5,7 @@ const { ErrorHandler } = require("./middleware/errorHandler");
 
 const userRouter = require("./routers/userRouter");
 const realEstateRouter = require("./routers/realEstateRouter");
+const adRouter = require('./routers/adRouter');
 
 const app = express();
 const port = process.env.PORT;
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use(userRouter);
 app.use('/realestate', realEstateRouter);
+app.use(adRouter);
 app.use(ErrorHandler);
 
 app.listen(port, async () => {
