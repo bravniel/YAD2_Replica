@@ -6,11 +6,11 @@ const userAuth = async (req, res, next) => {
     const token = req.headers.token;
     const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
     const user = await sql.query(
-      `SELECT Email,FirstName,Phone FROM Users WHERE '${decoded.payload}'=Email`
+      `SELECT Email FROM Users WHERE Email = N'${decoded.payload}'`
     );
     if (user.recordset.length === 0)
       return res.status(404).send({ Message: "No Authentication." });
-    req.user = user.recordset[0];
+    req.user = user.recordset[0].Email;
     next();
   } catch (e) {
     res.status(403).send({ Message: "No Authentication." });
