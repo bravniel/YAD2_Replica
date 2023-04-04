@@ -6,21 +6,6 @@ const { v4: uuidv4 } = require('uuid');
 
 const router = express.Router();
 
-/* Returns a fixed number of states upon application load. */
-router.get('/', async (req, res, next) => {
-  try {
-    const states = await sql.query(
-      `SELECT * FROM Property join Props on Property.propertyId = Props.propertyId;`
-    );
-    const finalStates = states.recordsets[0];
-    if (finalStates.length === 0) throw new Error('No apartments in DB.');
-    console.log(states);
-    res.send(states.recordset);
-  } catch (error) {
-    return next(error);
-  }
-});
-
 /* Adds a realestate sell to the DB. */
 router.post('/asset', async (req, res, next) => {
   try {
@@ -59,10 +44,6 @@ router.get('/assets', async (req, res, next) => {
   const orderBy = `${req.query.orderBy}`;
   const search = JSON.parse(req.query.search);
   const filterBy = req.query.filterBy;
-  console.log('search', search);
-  console.log('offset', offset);
-  console.log('orderBy', orderBy);
-  console.log('filterBy', filterBy);
 
   let queryString = 'WHERE owner IS NOT NULL';
   if (search.city.value.length > 0)
@@ -144,9 +125,6 @@ router.get('/assets', async (req, res, next) => {
   if (filterBy.withPicture == 'true')
     queryString += ` AND imageSrcName IS NOT NULL`;
   if (filterBy.withPrice == 'true') queryString += ` AND price IS NOT NULL`;
-  console.log(
-    `SELECT * FROM Property join Props on Property.propertyId = Props.propertyId ${queryString} ORDER BY ${orderBy} OFFSET ${offset} ROWS FETCH NEXT 5 ROWS ONLY;`
-  );
   try {
     const states = await sql.query(
       `SELECT * FROM Property join Props on Property.propertyId = Props.propertyId ${queryString} ORDER BY CASE 
@@ -165,5 +143,20 @@ router.get('/assets', async (req, res, next) => {
     return next(error);
   }
 });
+
+/* Returns a fixed number of states upon application load. */
+// router.get('/', async (req, res, next) => {
+//   try {
+//     const states = await sql.query(
+//       `SELECT * FROM Property join Props on Property.propertyId = Props.propertyId;`
+//     );
+//     const finalStates = states.recordsets[0];
+//     if (finalStates.length === 0) throw new Error('No apartments in DB.');
+//     console.log(states);
+//     res.send(states.recordset);
+//   } catch (error) {
+//     return next(error);
+//   }
+// });
 
 module.exports = router;

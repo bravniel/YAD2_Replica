@@ -38,7 +38,19 @@ const FilterDropDownBox = ({ filterBy, setFilter, setFilterBy, onClick }) => {
         />
       </div>
       <div className='filter-clear-btn'>
-        <span>ניקוי</span>
+        <span
+          onClick={() => {
+            setFilter({
+              withPicture: false,
+              withPrice: false,
+            });
+            setFilterBy({
+              withPicture: false,
+              withPrice: false,
+            });
+          }}>
+          ניקוי
+        </span>
         <span
           className='filter-btn'
           onClick={() => {

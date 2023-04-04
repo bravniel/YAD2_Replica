@@ -27,20 +27,8 @@ export default function ForSell() {
     getData();
   }, [page, sort, filter]);
 
-  useEffect(() => {
-    console.log('form', form);
-    console.log('sort', sort);
-  }, [form]);
-
-  useEffect(() => {
-    console.log('filter', filter);
-  }, [filter]);
-
   function getData() {
     getRealEstates(form, page, sort, filter).then((data) => {
-      console.log('data', data);
-      console.log('data.data', data.data);
-      console.log('data.numOfPages', data.numOfPages);
       setRealEstates(data.data);
       setTotalPages(Math.ceil(data.numOfPages / 5));
     });
