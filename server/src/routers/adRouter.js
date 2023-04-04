@@ -7,7 +7,7 @@ const userAuth = require('../middleware/authentication');
 const router = express.Router();
 
 /* Adds a liked ad to the DB. */
-router.post('/ad',userAuth, async (req, res, next) => {
+router.post('/user/liked-ad',userAuth, async (req, res, next) => {
   try {
     const adId = req.body.adId;
     const uuid = uuidv4();
@@ -27,8 +27,23 @@ router.post('/ad',userAuth, async (req, res, next) => {
 });
 
 /* Returns the liked ads. */
-router.get('/ad', userAuth, async (req, res, next) => {
-//   const userId = `${req.query.userId}`;
+router.get('/user/liked-ads', userAuth, async (req, res, next) => {
+  //   const userId = `${req.query.userId}`;
+  try {
+    const ads = await sql.query(
+      `SELECT * FROM Property inner join FavoriteAds on Property.propertyId = FavoriteAds.adId where FavoriteAds.userId = ${req.user};`
+    );
+    const finalAds = ads.recordsets[0];
+    if (finalAds.length === 0) throw new Error('No liked ads in DB.');
+    res.send(ads.recordset);
+  } catch (error) {
+    return next(error);
+  }
+});
+
+/* Returns all ads that user published. */
+router.get('/user/all-ads', userAuth, async (req, res, next) => {
+  //   const userId = `${req.query.userId}`;
   try {
     const ads = await sql.query(
       `SELECT * FROM Property inner join FavoriteAds on Property.propertyId = FavoriteAds.adId where FavoriteAds.userId = ${req.user};`

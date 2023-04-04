@@ -44,15 +44,24 @@ export const getRealEstates = async (searchForm, page, orderBy, filterBy) => {
 // ---------- liked ads requests ---------- //
 
 export const addFavoriteAd = async (token,adId) => {
-  const routeUrl = apiUrl + '/ad';
+  const routeUrl = apiUrl + '/user/liked-ad';
   const headers = { Authorization: 'Bearer ' + token };
   const addFavoriteAd = await axios.post(routeUrl, { adId }, { headers });
   return addFavoriteAd.data;
 };
 
 export const getFavoriteAds = async (token) => {
-  const routeUrl = apiUrl + '/ad';
+  const routeUrl = apiUrl + '/user/liked-ads';
   const headers = { Authorization: 'Bearer ' + token };
   const allFavoriteAds = await axios.get(routeUrl, { headers });
   return allFavoriteAds.data;
+};
+
+// ---------- user ads requests ---------- //
+
+export const getUserAds = async (token) => {
+  const routeUrl = apiUrl + '/user/all-ads';
+  const headers = { Authorization: 'Bearer ' + token };
+  const allUserAds = await axios.get(routeUrl, { headers });
+  return allUserAds.data;
 };
