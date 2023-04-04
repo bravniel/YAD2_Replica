@@ -2,6 +2,8 @@ import axios from 'axios';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
+// ---------- user requests ---------- //
+
 export const signUpUser = async (credentials) => {
   const routeUrl = apiUrl + '/register';
   const newUser = await axios.post(routeUrl, credentials);
@@ -13,6 +15,8 @@ export const signInUser = async (credentials) => {
   const user = await axios.post(routeUrl, credentials);
   return user.data;
 };
+
+// ---------- realestate requests ---------- //
 
 export const publishRealestate = async (credentials) => {
   const routeUrl = apiUrl + '/realestate/asset';
@@ -32,7 +36,23 @@ export const getRealEstates = async (searchForm, page, orderBy, filterBy) => {
   const search = JSON.stringify(searchForm);
   const routeUrl = apiUrl + '/realestate/assets';
   const params = { params: { search, page, orderBy, filterBy } };
-  console.log('search',search);
+  console.log('search', search);
   const allAssets = await axios.get(routeUrl, params);
   return allAssets.data;
+};
+
+// ---------- liked ads requests ---------- //
+
+export const addFavoriteAd = async (token,adId) => {
+  const routeUrl = apiUrl + '/ad';
+  const headers = { Authorization: 'Bearer ' + token };
+  const addFavoriteAd = await axios.post(routeUrl, { adId }, { headers });
+  return addFavoriteAd.data;
+};
+
+export const getFavoriteAds = async (token) => {
+  const routeUrl = apiUrl + '/ad';
+  const headers = { Authorization: 'Bearer ' + token };
+  const allFavoriteAds = await axios.get(routeUrl, { headers });
+  return allFavoriteAds.data;
 };
