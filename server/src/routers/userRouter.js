@@ -1,27 +1,28 @@
-const express = require("express");
-const sql = require("mssql");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
-const UserAuth = require("../middleware/authentication");
+const express = require('express');
+const sql = require('mssql');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const UserAuth = require('../middleware/authentication');
+const userAuth = require('../middleware/authentication');
 
 const router = express.Router();
 
 /* Checks if a user exist if so returns the token otherwise error. */
-router.post("/login", async (req, res, next) => {
+router.post('/login', async (req, res, next) => {
   try {
     const user = await sql.query(
       `SELECT Email,Password,FirstName,LastName FROM Users WHERE Email='${req.body.email}'`
     );
-    if (user.recordset.length === 0) throw new Error("User does not exist");
+    if (user.recordset.length === 0) throw new Error('User does not exist');
     const isMatch = await bcrypt.compare(
       req.body.password,
       user.recordset[0].Password
     );
-    if (!isMatch) throw new Error("Invalid Password");
+    if (!isMatch) throw new Error('Invalid Password');
     const token = jwt.sign(
       { payload: user.recordset[0].Email },
       process.env.TOKEN_SECRET,
-      { expiresIn: "1h" }
+      { expiresIn: '1h' }
     );
     res.send({
       token,
@@ -35,7 +36,7 @@ router.post("/login", async (req, res, next) => {
 });
 
 /* Creates a user in the SQL DB with Email and hashed password. */
-router.post("/register", async (req, res, next) => {
+router.post('/register', async (req, res, next) => {
   try {
     const user = {
       email: req.body.email,
@@ -51,7 +52,7 @@ router.post("/register", async (req, res, next) => {
       { payload: newUser.email },
       process.env.TOKEN_SECRET,
       {
-        expiresIn: "1h",
+        expiresIn: '1h',
       }
     );
     res.send({
@@ -63,6 +64,50 @@ router.post("/register", async (req, res, next) => {
   } catch (e) {
     return next(e);
     // res.status(500).send({ Error: e.message });
+  }
+});
+
+router.get('/user', userAuth, async (req, res, next) => {
+  try {
+    const userInfo = await sql.query(
+      `SELECT * FROM Users WHERE Email='${req.user}'`
+    );
+    res.send(userInfo.recordset[0]);
+  } catch (e) {
+    return next(e);
+  }
+});
+
+router.post('/user', userAuth, async (req, res, next) => {
+  console.log('req.body',req.body);
+  try {
+    const userInfo = await sql.query(
+      `UPDATE Users SET 
+      FirstName = N'${req.body.FirstName}',
+      LastName = N'${req.body.LastName}',
+      PhoneNumber = N'${req.body.PhoneNumber}',
+      dateOfBirth = N'${req.body.dateOfBirth}',
+      city = N'${req.body.city}',
+      street = N'${req.body.street}',
+      houseNumber = N'${req.body.houseNumber}' 
+      WHERE Users.Email='${req.user}'`
+    );
+    const user = await sql.query(
+      `SELECT Email,Password,FirstName,LastName FROM Users WHERE Email='${req.user}'`
+    );
+    const token = jwt.sign(
+      { payload: user.recordset[0].Email },
+      process.env.TOKEN_SECRET,
+      { expiresIn: '1h' }
+    );
+    res.send({
+      token,
+      firstName: user.recordset[0].FirstName,
+      lastName: user.recordset[0].LastName,
+      email: user.recordset[0].Email,
+    });
+  } catch (e) {
+    return next(e);
   }
 });
 

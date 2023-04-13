@@ -12,8 +12,6 @@ import QuickSearch from "./quickSearch/QuickSearch";
 
 export default function SideMenu({ handleBurgerButtonClick }) {
 
-
-
   return (
     <div className="menu">
       <div className="side-menu">

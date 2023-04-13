@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useContext, useEffect, useReducer, useState } from 'react';
 import {
   signInFormInitialState,
   SignInFormReducer,
@@ -9,10 +9,13 @@ import FormButton from '../general/signPage/signForm/formButton/FormButton';
 import FormSignOptions from '../general/signPage/signForm/formSignOptions/FormSignOptions';
 import { inputProperties, signInValidator } from '../../utils/utils';
 import FormInput from '../general/signPage/signForm/formInput/FormInput';
-import { signInUser } from '../../api/userRequests';
+import { getAllFavoriteAds, signInUser } from '../../api/userRequests';
 import { saveUserOnCookie } from '../../cookies/cookies';
+import { UserContext } from '../../context/UserContext';
 
 export default function SignInPage() {
+  const { user, dispatchUser, userFavoriteAds, dispatchUserFavoriteAds } =
+    useContext(UserContext);
   const navigate = useNavigate();
   const [isError, setIsError] = useState(false);
   const [formState, dispatchForm] = useReducer(
@@ -24,11 +27,17 @@ export default function SignInPage() {
   const onSubmitform = () => {
     const credentials = {
       email: formState.values.email,
-      password: formState.values.password
+      password: formState.values.password,
     };
     signInUser(credentials).then(
       (userData) => {
         saveUserOnCookie(userData);
+        dispatchUser(userData);
+        getAllFavoriteAds(userData.token).then((data) => {
+          // let userFavoriteAds = [];
+          // data.forEach((element) => userFavoriteAds.push(element.adId));
+          dispatchUserFavoriteAds(data);
+        });
         navigate('/realestate/forsell');
       },
       (err) => {

@@ -1,4 +1,3 @@
-
 const newAdValues = {
   numberOfParkingPlaces: {
     value: '2',

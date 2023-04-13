@@ -1,0 +1,46 @@
+.edit-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  gap: 0.5rem;
+  position: relative;
+  margin: 1rem 0;
+  padding: 0 0 0 2rem;
+
+  span {
+    color: #363636;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  input {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #36363643;
+    border-radius: 3px;
+
+    &:hover,
+    &:focus {
+      border: 1px solid black;
+      outline: none;
+    }
+    &::placeholder {
+      color: #36363672;
+    }
+  }
+
+  .invalid-message {
+    color: $myRed;
+    font-size: 0.75rem;
+  }
+
+  .edit-invalid {
+    border: 1px solid $myRed;
+    &:hover,
+    &:focus {
+    border: 1px solid $myRed;
+      outline: none;
+    }
+  }
+}

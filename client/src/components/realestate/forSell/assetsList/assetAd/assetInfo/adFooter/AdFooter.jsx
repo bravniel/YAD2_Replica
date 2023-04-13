@@ -9,6 +9,7 @@ import { CgTab } from 'react-icons/cg'; // Tab
 
 const AdFooter = ({ asset }) => {
   const mistGray = '#b6b6b6';
+  const adId = `${asset.propertyId}`.split(',')[0];
   return (
     <div className='utils-container'>
       <div className='contact-icons-container'>
@@ -30,7 +31,10 @@ const AdFooter = ({ asset }) => {
       </div>
       <div className='commerical-info-error-container'>
         <span className='error'>מצאתי טעות</span>
-        <span className='info'>מספר מודעה: {asset.propertyId}</span>
+        <span className='info'>
+          מספר מודעה:{' '}
+          {adId}
+        </span>
       </div>
     </div>
   );

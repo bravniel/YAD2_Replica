@@ -1,0 +1,86 @@
+.personal-area {
+  background: #f9f9f9;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  .personal-area-body {
+    width: 80%;
+    height: calc(100vh - 5rem);
+    overflow-y: scroll;
+    margin-right: 20%;
+    margin-top: 5rem;
+    position: relative;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    .edit-section-title {
+      font-size: 1.5rem;
+    }
+    .personal-area-form {
+      box-shadow: 0 2px 25px hsla(0, 0%, 42%, 0.088);
+      border-radius: 0.5rem;
+      border-width: 1px;
+      border-color: #eeeeee;
+      background-color: #ffffff;
+      padding: 2rem 1rem;
+      display: flex;
+      //   justify-content: center;
+      // gap: 1rem;
+      width: 100%;
+      .name-icon {
+        color: #8b42d0;
+        border: 2px solid #8b42d0;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 7rem;
+        width: 7rem;
+        font-weight: 500;
+        font-size: 1.75rem;
+        margin: 0 2rem;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        width: calc(100% - 11rem);
+        gap: 1rem;
+        .form-title {
+          font-weight: 500;
+          font-size: 1.2rem;
+          text-align: start;
+        }
+        .edit-inputs-container {
+          display: flex;
+          flex-wrap: wrap;
+        }
+        .edit-btn-section {
+          display: flex;
+          justify-content: flex-end;
+          gap:0.5rem;
+          button {
+            padding: 1rem;
+            border: none;
+            border-radius: 3rem;
+            font-weight: 500;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 25%;
+            cursor: pointer;
+          }
+          .cancel-edit-btn {
+            background-color: #fff;
+            color: #363636;
+          }
+          .save-edit-btn {
+            background-color: $myOrange;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}

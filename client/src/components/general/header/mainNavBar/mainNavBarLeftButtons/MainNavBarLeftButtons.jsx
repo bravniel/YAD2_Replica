@@ -1,19 +1,22 @@
-import React, { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
-import IconedNavLink from "../../iconedNavLink/IcondNavLink";
+import React, { useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import IconedNavLink from '../../iconedNavLink/IcondNavLink';
 import { TbBellRinging2 } from 'react-icons/tb';
-import { AiOutlineHeart } from "react-icons/ai";
-import { BsChatDots } from "react-icons/bs";
+import { AiOutlineHeart } from 'react-icons/ai';
+import { BsChatDots } from 'react-icons/bs';
 import { CgSmartphone } from 'react-icons/cg';
 import { BiUser } from 'react-icons/bi';
-import { deleteUserFromCookie, getUserFromCookie } from "../../../../../cookies/cookies";
+import {
+  deleteUserFromCookie,
+  getUserFromCookie,
+} from '../../../../../cookies/cookies';
 
 export default function MainNavBarLeftButtons({
   isScreenWidthLessThan1500px,
   isScreenWidthLessThan1260px,
   isScreenWidthLessThan880px,
 }) {
-    const location = useLocation();
+  const location = useLocation();
   const user = getUserFromCookie();
   const [dropdown, setDropdown] = useState(false);
   const handleDropdownClick = () => {
@@ -35,7 +38,7 @@ export default function MainNavBarLeftButtons({
         />
       )}
       <IconedNavLink
-        to={'liked'}
+        to={'/personal/favorites'}
         text={'מודעות שאהבתי'}
         isDisplayText={!isScreenWidthLessThan1500px}
         icon={AiOutlineHeart}
@@ -52,7 +55,8 @@ export default function MainNavBarLeftButtons({
               isDisplayText={!isScreenWidthLessThan1500px}>
               {user ? (
                 <div className='initials-container'>
-                  {user.firstName[0]}{user.lastName[0]}
+                  {user.firstName[0]}
+                  {user.lastName[0]}
                 </div>
               ) : (
                 <div className='initials-container-icon'>
@@ -62,12 +66,20 @@ export default function MainNavBarLeftButtons({
             </IconedNavLink>
             {user && (
               <div className={!dropdown ? 'clicked' : 'dropdown-content'}>
-                <IconedNavLink
-                  text={'התנתקות'}
-                  icon={CgSmartphone}
-                  onClick={handleDropdownClick}
-                  to={location.pathname}
-                />
+                <div>
+                  <IconedNavLink
+                    text={'איזור אישי'}
+                    icon={BiUser}
+                    onClick={() => setDropdown(false)}
+                    to={'/personal/profile'}
+                  />
+                  <IconedNavLink
+                    text={'התנתקות'}
+                    icon={CgSmartphone}
+                    onClick={handleDropdownClick}
+                    to={location.pathname}
+                  />
+                </div>
               </div>
             )}
           </li>

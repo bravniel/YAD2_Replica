@@ -16,6 +16,20 @@ export const signInUser = async (credentials) => {
   return user.data;
 };
 
+export const getUserData = async (token) => {
+  const routeUrl = apiUrl + '/user';
+  const headers = { headers: { Authorization: `Bearer ${token}` } };
+  const userData = await axios.get(routeUrl, headers);
+  return userData.data;
+};
+
+export const setUserData = async (token, userInfo) => {
+  const routeUrl = apiUrl + '/user';
+  const headers = { headers: { Authorization: `Bearer ${token}` } };
+  const userData = await axios.post(routeUrl, userInfo, headers);
+  return userData.data;
+};
+
 // ---------- realestate requests ---------- //
 
 export const publishRealestate = async (credentials) => {
@@ -43,17 +57,34 @@ export const getRealEstates = async (searchForm, page, orderBy, filterBy) => {
 
 // ---------- liked ads requests ---------- //
 
-export const addFavoriteAd = async (token,adId) => {
+export const addFavoriteAd = async (token, adId) => {
   const routeUrl = apiUrl + '/user/liked-ad';
-  const headers = { Authorization: 'Bearer ' + token };
-  const addFavoriteAd = await axios.post(routeUrl, { adId }, { headers });
+  const headers = { headers: { Authorization: `Bearer ${token}` } };
+  const addFavoriteAd = await axios.post(routeUrl, { adId }, headers);
   return addFavoriteAd.data;
+};
+
+export const removeFavoriteAd = async (token, adId) => {
+  const routeUrl = apiUrl + '/user/liked-ad';
+  const headers = { Authorization: `Bearer ${token}` };
+  const removeFavoriteAd = await axios.delete(routeUrl, {
+    headers,
+    data: { adId },
+  });
+  return removeFavoriteAd.data;
 };
 
 export const getFavoriteAds = async (token) => {
   const routeUrl = apiUrl + '/user/liked-ads';
-  const headers = { Authorization: 'Bearer ' + token };
-  const allFavoriteAds = await axios.get(routeUrl, { headers });
+  const headers = { headers: { Authorization: `Bearer ${token}` } };
+  const favoriteAds = await axios.get(routeUrl, headers);
+  return favoriteAds.data;
+};
+
+export const getAllFavoriteAds = async (token) => {
+  const routeUrl = apiUrl + '/user/all-liked-ads';
+  const headers = { headers: { Authorization: `Bearer ${token}` } };
+  const allFavoriteAds = await axios.get(routeUrl, headers);
   return allFavoriteAds.data;
 };
 
@@ -61,7 +92,7 @@ export const getFavoriteAds = async (token) => {
 
 export const getUserAds = async (token) => {
   const routeUrl = apiUrl + '/user/all-ads';
-  const headers = { Authorization: 'Bearer ' + token };
-  const allUserAds = await axios.get(routeUrl, { headers });
+  const headers = { headers: { Authorization: `Bearer ${token}` } };
+  const allUserAds = await axios.get(routeUrl, headers);
   return allUserAds.data;
 };

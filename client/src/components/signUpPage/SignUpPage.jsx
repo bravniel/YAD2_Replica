@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, useReducer, useState } from 'react';
+import React, { useContext, useReducer, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signUpUser } from '../../api/userRequests';
+import { UserContext } from '../../context/UserContext';
 import { saveUserOnCookie } from '../../cookies/cookies';
 import {
   signUpFormInitialState,
@@ -11,7 +12,9 @@ import FirstStep from './FirstStep';
 import SecondStep from './SecondStep';
 
 export default function SignUpPage() {
-    const navigate = useNavigate();
+  const { user, dispatchUser, userFavoriteAds, dispatchUserFavoriteAds } =
+    useContext(UserContext);
+  const navigate = useNavigate();
   const [formState, dispatchForm] = useReducer(
     SignUpFormReducer,
     signUpFormInitialState
@@ -35,35 +38,34 @@ export default function SignUpPage() {
       password: formState.values.password,
     };
     signUpUser(credentials).then(
-        (userData) => {
+      (userData) => {
         saveUserOnCookie(userData);
+        dispatchUser(userData);
         navigate('/realestate/forsell');
       },
-        (err) => {
-          console.log('err: ', err.response.data.Message);
-          if (
-            err.response.data.Message === 'משתמש זה קיים במערכת.'
-          ) {
-            dispatchForm({
-              type: 'SET',
-              payload: {
-                type: 'email',
-                value: formState.values['email'],
-                isValidInput: false,
-              },
-            });
-              dispatchForm({
-                type: 'SET',
-                payload: {
-                  type: 'siteRegulations',
-                  value: false,
-                  isValidInput: false,
-                },
-              });
-            setIsEmailExists(true);
-            setIsSecondStep(false);
-          }
+      (err) => {
+        console.log('err: ', err.response.data.Message);
+        if (err.response.data.Message === 'משתמש זה קיים במערכת.') {
+          dispatchForm({
+            type: 'SET',
+            payload: {
+              type: 'email',
+              value: formState.values['email'],
+              isValidInput: false,
+            },
+          });
+          dispatchForm({
+            type: 'SET',
+            payload: {
+              type: 'siteRegulations',
+              value: false,
+              isValidInput: false,
+            },
+          });
+          setIsEmailExists(true);
+          setIsSecondStep(false);
         }
+      }
     );
   };
 
@@ -89,8 +91,7 @@ export default function SignUpPage() {
 
         return;
       }
-        if (!isSecondStep) {
-          
+      if (!isSecondStep) {
         setIsSecondStep(true);
       }
       i++;

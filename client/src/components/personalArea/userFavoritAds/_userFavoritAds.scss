@@ -1,0 +1,30 @@
+.favorite-ad-page {
+  background: #f9f9f9;
+  min-height: calc(100vh + 4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+  box-shadow: inset 0 3px 5px 3px rgba(0, 0, 0, 0.1);
+  gap: 2rem;
+  height: fit-content;
+  @media (max-width: 880px) {
+    padding: 0;
+  }
+  .favorite-ad-subtitle {
+    font-weight: 400;
+    padding: 0.5rem;
+    width: 100%;
+    max-width: 55rem;
+    width: 100%;
+  }
+  .favorite-ad-title {
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 400;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+    max-width: 55rem;
+    width: 100%;
+  }
+}

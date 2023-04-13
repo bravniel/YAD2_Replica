@@ -1,0 +1,106 @@
+.personal-area-side-bar-wrapper {
+  background-color: #30313f;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 1rem;
+  position: fixed;
+  height: calc(100vh - 5rem);
+  top: 5rem;
+
+  .user-info-container {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    span {
+      font-weight: 500;
+      font-size: 1.2rem;
+      color: #f9f9f9;
+    }
+  }
+
+  .nav-link {
+    // display: flex;
+    // align-items: center;
+    color: #eee;
+    // padding: 1rem;
+    // text-decoration: none;
+    &:hover {
+      background: none;
+      cursor: pointer;
+    }
+  }
+
+  .active {
+    background: #23242c;
+    border-radius: 5px;
+  }
+
+  .nav-link-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    img {
+      height: 4rem;
+    }
+  }
+  .nav-link-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.5rem;
+    img {
+      max-height: 1.5rem;
+      max-width: 3rem;
+    }
+  }
+  .nav-link-icon {
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+  }
+
+  .nav-link-text {
+    font-weight: 400;
+  }
+}
+.personal-area-side-bar-bottom {
+  .form-sign-options-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    .form-button {
+      &:hover {
+        background-color: none;
+      }
+    }
+    .accessibility {
+      background-color: #002f75;
+      color: #ffffff;
+      border: 1px solid #ffffff;
+    }
+    .telephone {
+      background-color: #ffffff;
+      color: black;
+      border: 1px solid #ffffff;
+      &:hover {
+        background-color: #cccccc;
+        border: 1px solid #cccccc;
+      }
+    }
+  }
+  .personal-area-logout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #cccccc;
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+}

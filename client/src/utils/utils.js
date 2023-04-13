@@ -20,7 +20,7 @@ export const pageContent = [
     category: 'realestate',
     title: 'נדל"ן',
     sideIcon: SlHome,
-    path: '/realestate',
+    path: '/realestate/forsell',
     rightItems: [
       {
         title: 'דירות למכירה',
@@ -454,6 +454,21 @@ export const pageContent = [
 
 const phoneRegex = /^[0][5][0|2|3|4|5|9]{1}[-]{0,1}[0-9]{7}$/;
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/;
+
+const currentDate = new Date();
+
+const minNewDate = new Date(
+  currentDate.getFullYear() - 100,
+  currentDate.getMonth(),
+  currentDate.getDate()
+);
+
+export const maxDate = new Date(
+  currentDate.getFullYear() - 18,
+  currentDate.getMonth(),
+  currentDate.getDate()
+);
+
 export const signInValidator = (value) => {
   return value.length > 0;
 };
@@ -468,6 +483,14 @@ export const emailValidator = (value) => {
 };
 export const passwordValidator = (value) => {
   return passwordRegex.test(value);
+};
+
+export const isBirthDateValid = (value) => {
+  const newValue = new Date(value);
+  return (
+    newValue.getTime() <= maxDate.getTime() &&
+    newValue.getTime() >= minNewDate.getTime()
+  );
 };
 
 export const inputProperties = {
