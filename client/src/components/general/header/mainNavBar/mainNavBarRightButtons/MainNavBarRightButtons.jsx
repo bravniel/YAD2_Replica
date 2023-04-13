@@ -1,16 +1,17 @@
-import React, { useState } from "react";
-import yad2Logo from "../../../../../assets/icons/yad2Logo.png";
-import IconedNavLink from "../../iconedNavLink/IcondNavLink";
+import React, { useState } from 'react';
+import yad2Logo from '../../../../../assets/icons/yad2Logo.png';
+import IconedNavLink from '../../iconedNavLink/IcondNavLink';
 import { FaBars } from 'react-icons/fa';
-import DropdownMenu from "../../dropdownMenu/DropdownMenu";
-import { pageContent } from "../../../../../utils/utils";
-import { Link } from "react-router-dom";
-import SideMenu from "../../sideMenu/SideMenu";
+import DropdownMenu from '../../dropdownMenu/DropdownMenu';
+import { pageContent } from '../../../../../utils/utils';
+import { Link, useNavigate } from 'react-router-dom';
+import SideMenu from '../../sideMenu/SideMenu';
 
 export default function MainNavBarRightButtons({
   isScreenWidthLessThan1260px,
   isScreenWidthLessThan880px,
 }) {
+  const navigate = useNavigate();
   const [dropdown, setDropdown] = useState(false);
   const handleDropdownClick = () => {
     setDropdown(false);
@@ -22,11 +23,11 @@ export default function MainNavBarRightButtons({
   return (
     <div
       className={
-        !isScreenWidthLessThan880px
-          ? 'side-wrapper'
-          : 'side-wrapper reverse'
+        !isScreenWidthLessThan880px ? 'side-wrapper' : 'side-wrapper reverse'
       }>
-      <div className='nav-link-logo'>
+      <div
+        className='nav-link-logo'
+        onClick={() => navigate('/realestate/forsell')}>
         <img src={yad2Logo} alt={'לוגו יד2'} />
       </div>
       {isScreenWidthLessThan1260px && (

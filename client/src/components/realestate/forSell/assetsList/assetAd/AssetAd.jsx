@@ -48,8 +48,9 @@ export default function AssetAd({ asset }) {
   }
 
   const toggleFavoriteAd = (adId) => {
-    !isAdFavorite(adId)
-      ? addFavoriteAd(user.token, adId).then(
+    if (!isAdFavorite(adId)) {
+      if (user) {
+        addFavoriteAd(user.token, adId).then(
           (data) => {
             let newFavoriteAd = { adId: `${adId}` };
             dispatchUserFavoriteAds([...userFavoriteAds, newFavoriteAd]);
@@ -57,8 +58,14 @@ export default function AssetAd({ asset }) {
           (err) => {
             console.log('err: ', err.response.data.Message);
           }
-        )
-      : removeFavoriteAd(user.token, adId).then(
+        );
+      } else {
+        let newFavoriteAd = { adId: `${adId}` };
+        dispatchUserFavoriteAds([...userFavoriteAds, newFavoriteAd]);
+      }
+    } else {
+      if (user) {
+        removeFavoriteAd(user.token, adId).then(
           (data) => {
             let newFavoriteAdsArray = [...userFavoriteAds];
             newFavoriteAdsArray = newFavoriteAdsArray.filter(
@@ -70,6 +77,14 @@ export default function AssetAd({ asset }) {
             console.log('err: ', err.response.data.Message);
           }
         );
+      } else {
+        let newFavoriteAdsArray = [...userFavoriteAds];
+        newFavoriteAdsArray = newFavoriteAdsArray.filter(
+          (obj) => obj.adId !== `${adId}`
+        );
+        dispatchUserFavoriteAds(newFavoriteAdsArray);
+      }
+    }
   };
 
   return (

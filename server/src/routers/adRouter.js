@@ -46,7 +46,7 @@ router.get('/user/liked-ads', userAuth, async (req, res, next) => {
       `SELECT p.*, pr.* FROM Property p JOIN Props pr ON p.propertyId = pr.propertyId JOIN FavoriteAds fa ON p.propertyId = fa.adId WHERE fa.userId = N'${req.user}'`
     );
     const finalAds = ads.recordsets[0];
-    if (finalAds.length === 0) throw new Error('No liked ads in DB.');
+    // if (finalAds.length === 0) throw new Error('No liked ads in DB.');
     res.send(ads.recordset);
   } catch (error) {
     return next(error);
@@ -59,7 +59,7 @@ router.get('/user/all-liked-ads', userAuth, async (req, res, next) => {
       `SELECT adId FROM FavoriteAds WHERE userId = N'${req.user}'`
     );
     const finalAds = ads.recordsets[0];
-    if (finalAds.length === 0) throw new Error('No liked ads in DB.');
+    // if (finalAds.length === 0) throw new Error('No liked ads in DB.');
     res.send(ads.recordset);
   } catch (error) {
     return next(error);

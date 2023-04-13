@@ -34,6 +34,10 @@
   gap: 1rem;
 }
 
+.nav-bar-item:hover .favorite-dropdown-content {
+  display: flex;
+}
+
 .clicked {
   display: none;
 }

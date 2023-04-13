@@ -12,6 +12,18 @@ const UserContextProvider = (props) => {
   useEffect(() => {
     console.log('userFavoriteAds', userFavoriteAds);
   }, [userFavoriteAds]);
+
+  useEffect(() => {
+      console.log('user', user);
+      user
+        ? getAllFavoriteAds(userData.token).then((data) => {
+            // let userFavoriteAds = [];
+            // data.forEach((element) => userFavoriteAds.push(element.adId));
+            dispatchUserFavoriteAds(data);
+          })
+        : dispatchUserFavoriteAds([]);
+  }, [user]);
+    
   return (
     <UserContext.Provider
       value={{ user, dispatchUser, userFavoriteAds, dispatchUserFavoriteAds }}>

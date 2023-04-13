@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import IconedNavLink from '../../iconedNavLink/IcondNavLink';
 import { TbBellRinging2 } from 'react-icons/tb';
@@ -10,6 +10,8 @@ import {
   deleteUserFromCookie,
   getUserFromCookie,
 } from '../../../../../cookies/cookies';
+import { UserContext } from '../../../../../context/UserContext';
+import FavoriteAdsDropdown from './favoriteAdsDropdown/FavoriteAdsDropdown';
 
 export default function MainNavBarLeftButtons({
   isScreenWidthLessThan1500px,
@@ -17,12 +19,16 @@ export default function MainNavBarLeftButtons({
   isScreenWidthLessThan880px,
 }) {
   const location = useLocation();
-  const user = getUserFromCookie();
+  // const user = getUserFromCookie();
   const [dropdown, setDropdown] = useState(false);
+  const [favoritAdsDropdown, setFavoritAdsDropdown] = useState(false);
   const handleDropdownClick = () => {
     deleteUserFromCookie();
+    dispatchUser(null);
     setDropdown(false);
   };
+  const { user, dispatchUser, userFavoriteAds, dispatchUserFavoriteAds } =
+    useContext(UserContext);
   return (
     <div
       className={!isScreenWidthLessThan880px ? 'side-wrapper' : 'side-wrapper'}>
@@ -37,12 +43,45 @@ export default function MainNavBarLeftButtons({
           icon={TbBellRinging2}
         />
       )}
-      <IconedNavLink
-        to={'/personal/favorites'}
-        text={'מודעות שאהבתי'}
-        isDisplayText={!isScreenWidthLessThan1500px}
-        icon={AiOutlineHeart}
-      />
+      <ul className='nav-bar'>
+        <li
+          className='nav-bar-item'
+          onMouseEnter={() => setFavoritAdsDropdown(true)}
+          onMouseLeave={() => setFavoritAdsDropdown(false)}>
+          <div className='favorite-ads-container'>
+            <IconedNavLink
+              to={'/personal/favorites'}
+              text={'מודעות שאהבתי'}
+              isDisplayText={!isScreenWidthLessThan1500px}
+              icon={AiOutlineHeart}
+            />
+            {userFavoriteAds.length > 0 && (
+              <div className='favorite-ads-count-icon'>
+                {userFavoriteAds.length}
+              </div>
+            )}
+            <div
+              className={
+                !favoritAdsDropdown ? 'clicked' : 'favorite-dropdown-content'
+              }>
+              <FavoriteAdsDropdown />
+            </div>
+          </div>
+        </li>
+      </ul>
+      {/* <div className='favorite-ads-container'>
+        <IconedNavLink
+          to={'/personal/favorites'}
+          text={'מודעות שאהבתי'}
+          isDisplayText={!isScreenWidthLessThan1500px}
+          icon={AiOutlineHeart}
+        />
+        {userFavoriteAds.length > 0 && (
+          <div className='favorite-ads-count-icon'>
+            {userFavoriteAds.length}
+          </div>
+        )}
+      </div> */}
       {!isScreenWidthLessThan880px && (
         <ul className='nav-bar'>
           <li
