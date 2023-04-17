@@ -1,3 +1,32 @@
+.personal-area-side-menu {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  right: -100vw;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.54);
+  display: flex;
+  transition: all 0.1s ease-out;
+  .close-side-menu {
+    width: calc(100vw - 18rem);
+  }
+  .personal-area-side-bar-wrapper {
+    z-index: 99;
+    height: 100vh;
+    top: 0;
+    width: 18rem;
+    position: relative;
+    right: -100vw;
+    transition: all 0.3s ease-out;
+  }
+}
+.personal-area-side-menu.active {
+  right: 0;
+}
+.personal-area-side-bar-wrapper.active {
+  right: 0;
+}
 .personal-area-side-bar-wrapper {
   background-color: #30313f;
   width: 20%;
@@ -23,11 +52,7 @@
   }
 
   .nav-link {
-    // display: flex;
-    // align-items: center;
     color: #eee;
-    // padding: 1rem;
-    // text-decoration: none;
     &:hover {
       background: none;
       cursor: pointer;
@@ -37,6 +62,10 @@
   .active {
     background: #23242c;
     border-radius: 5px;
+    &:hover {
+      background: #23242c;
+      cursor: pointer;
+    }
   }
 
   .nav-link-logo {

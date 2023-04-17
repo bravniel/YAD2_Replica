@@ -38,19 +38,3 @@ export default function DropdownMenu({ item, dropdown, handleClick }) {
     </div>
   );
 };
-
-
-// export default function DropdownMenu(props) {
-//     const [dropdown, setDropdown] = useState(false);
-
-//     return (<ul className="dropdown-content">
-//         {props.dropdownItems.map((items, index) => (
-//             <div key={index}>
-//                 {items.map((item, index) => (
-//                     <li key={index}>{item.name} {item.img && <img src={item.img} />}</li>
-//                 ))}
-//             </div>
-//         ))
-//     }
-//     </ul>)
-// };

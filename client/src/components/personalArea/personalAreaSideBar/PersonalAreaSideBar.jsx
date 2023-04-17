@@ -1,5 +1,4 @@
-// PersonalAreaSideBar
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import IconedNavLink from '../../general/header/iconedNavLink/IcondNavLink';
 import { sideBarContent } from '../../../utils/personalArea';
 import {
@@ -8,16 +7,24 @@ import {
 } from '../../../cookies/cookies';
 import UserSideIcon from '../userSideIcon/UserSideIcon';
 import { useNavigate } from 'react-router-dom';
-import FormButton from '../../general/signPage/signForm/formButton/FormButton';
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import { IoAccessibilitySharp } from 'react-icons/io5';
+import { WindowContext } from '../../../context/WindowContext';
 
-export default function PersonalAreaSideBar() {
+export default function PersonalAreaSideBar({
+  handleBurgerButtonClick,
+  sideMenu,
+}) {
   const user = getUserFromCookie();
   const navigate = useNavigate();
 
   return (
-    <div className='personal-area-side-bar-wrapper'>
+    <div
+      className={
+        !sideMenu
+          ? 'personal-area-side-bar-wrapper'
+          : 'personal-area-side-bar-wrapper active'
+      }>
       <div className='user-info-container'>
         <UserSideIcon />
         <span>
@@ -32,6 +39,7 @@ export default function PersonalAreaSideBar() {
               to={item.path}
               text={item.title}
               icon={item.sideIcon}
+              onClick={handleBurgerButtonClick}
             />
           );
         })}
@@ -49,6 +57,7 @@ export default function PersonalAreaSideBar() {
           className='personal-area-logout'
           onClick={() => {
             deleteUserFromCookie();
+            handleBurgerButtonClick();
             navigate('/realestate/forsell');
           }}>
           התנתקות

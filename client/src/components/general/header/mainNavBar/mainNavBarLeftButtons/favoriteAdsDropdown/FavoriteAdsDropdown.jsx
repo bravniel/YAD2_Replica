@@ -1,4 +1,3 @@
-// FavoriteAdsDropdown
 import React, { useContext, useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { getFavoriteAds } from '../../../../../../api/userRequests';
@@ -65,5 +64,3 @@ export default function FavoriteAdsDropdown() {
     </div>
   );
 }
-
-// FavoriteAdDropdownItem

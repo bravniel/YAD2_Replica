@@ -63,12 +63,11 @@
     transform: rotate(35deg);
   }
 
-  .checkmark-invalid{
+  .checkmark-invalid {
     border-color: $myRed;
   }
-  
 }
 .invalid-message {
-    color: $myRed;
-    font-size: 0.75rem;
-  }
+  color: $myRed;
+  font-size: 0.75rem;
+}

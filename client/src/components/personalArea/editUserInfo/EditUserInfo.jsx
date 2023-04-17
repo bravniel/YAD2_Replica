@@ -2,66 +2,36 @@ import React, { useContext, useEffect, useReducer } from 'react';
 import { getUserData, setUserData } from '../../../api/userRequests';
 import { UserContext } from '../../../context/UserContext';
 import { WindowContext } from '../../../context/WindowContext';
-import { getUserFromCookie, saveUserOnCookie } from '../../../cookies/cookies';
+import { saveUserOnCookie } from '../../../cookies/cookies';
 import {
   editUserInfoFormInitialState,
   EditUserInfoFormReducer,
 } from '../../../reducers/editUserInfoReduser';
 import { editUserInputs } from '../../../utils/personalArea';
-import { signInValidator } from '../../../utils/utils';
 import PersonalAreaSideBar from '../personalAreaSideBar/PersonalAreaSideBar';
 import EditInput from './editUserInfoInput/EditInput';
 
 export default function EditUserInfo() {
   const { windowWidth } = useContext(WindowContext);
   const { user, dispatchUser } = useContext(UserContext);
-  // const user = getUserFromCookie();
-  // getUserData(user.email)
-  // setUserData(user.email,)
   const [formState, dispatchForm] = useReducer(
     EditUserInfoFormReducer,
     editUserInfoFormInitialState
   );
   const onSubmitform = (e) => {
-    // e.preventDefault();
-    // if (formState.isFormValid) {
     setUserData(user.token, formState.values).then(
       (userData) => {
         saveUserOnCookie(userData);
-        // navigate('/realestate/forsell');
         dispatchUser(userData);
         alert('the information has been successfully updated');
       },
       (err) => {
         console.log('err: ', err.response.data.Message);
-        // if (
-        //   err.response.data.Message === 'משתמש זה לא קיים במערכת.' ||
-        //   err.response.data.Message === 'סיסמה שגויה.'
-        // ) {
-        //   setIsError(true);
-        // }
       }
     );
-    // }
   };
 
   useEffect(() => {
-    // getUserData(user.token).then((data) => {
-    //   dispatchForm({
-    //     type: 'INIT',
-    //     payload: {
-    //       data: {
-    //         FirstName: data.FirstName != null ? data.FirstName : '',
-    //         LastName: data.LastName != null ? data.LastName : '',
-    //         PhoneNumber: data.PhoneNumber != null ? data.PhoneNumber : '',
-    //         dateOfBirth: data.dateOfBirth != null ? data.dateOfBirth : '',
-    //         city: data.city != null ? data.city : '',
-    //         street: data.street != null ? data.street : '',
-    //         houseNumber: data.houseNumber != null ? data.houseNumber : '',
-    //       },
-    //     },
-    //   });
-    // });
     userInfo();
   }, []);
 
@@ -119,7 +89,7 @@ export default function EditUserInfo() {
 
   return (
     <div className='personal-area'>
-      <PersonalAreaSideBar />
+      {windowWidth > 1020 && <PersonalAreaSideBar />}
       <div className='personal-area-body'>
         <span className='edit-section-title'>עדכון פרטים</span>
         {formState.values ? (
@@ -145,6 +115,10 @@ export default function EditUserInfo() {
                 ))}
               </div>
               <div className='form-title'>כתובת</div>
+              <div className='form-subtitle'>
+                כדאי למלא את הכתובת, כדי שנוכל לחבר אותה אוטומטית בפעם הבאה
+                שתפרסמו מודעה
+              </div>
               <div className='edit-inputs-container'>
                 {editUserInputs.address.map((key, index) => (
                   <EditInput

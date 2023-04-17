@@ -6,13 +6,46 @@
   border-top: 4px solid $myOrange;
   box-shadow: inset 0 3px 5px 3px rgba(0, 0, 0, 0.1);
   position: fixed;
-  top:0;
-  width:100vw;
+  top: 0;
+  width: 100vw;
+  z-index: 50;
+
+  @media (max-width: 770px) {
+    justify-content: center;
+  }
+  .burger-button {
+    color: $myOrange;
+    padding: 0 1rem 0 0;
+    display: flex;
+    @media (max-width: 770px) {
+      position: absolute;
+      right: 0;
+    }
+  }
 
   .personal-area-container {
     display: flex;
     align-items: center;
     height: 100%;
+    @media (max-width: 1020px) {
+      .nav-link-logo {
+        margin-right: 0;
+      }
+    }
+    @media (max-width: 770px) {
+      position: relative;
+      justify-content: center;
+    }
+
+    .burger-button {
+      color: $myOrange;
+      padding: 0 1rem 0 0;
+      display: flex;
+      @media (max-width: 770px) {
+        position: relative;
+        left: 0;
+      }
+    }
     .new-ad-link {
       border-radius: 2rem;
       background: #0fca80;

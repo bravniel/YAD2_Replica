@@ -1,35 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 export default function FormCheckBox({
   id,
   text,
   invalidValueMessage,
   dispatchForm,
-    formState,
-  required
+  formState,
+  required,
 }) {
-    const [checked, setChecked] = useState(false); 
+  const onChangeSetCheckbox = (e) => {
+    const isChecked = e.target.checked;
+    dispatchForm({
+      type: 'SET',
+      payload: { type: id, value: isChecked, isValidInput: isChecked },
+    });
+  };
 
-    const onChangeSetCheckbox = (e) => {
-        const isChecked = (e.target.checked);
-        dispatchForm({
-          type: 'SET',
-          payload: { type: id, value: isChecked, isValidInput: isChecked },
-        });
-    //   if (!isChecked) {
-    //     dispatchForm({
-    //       type: 'SET',
-    //       payload: { type: id, value: false, isValidInput: false },
-    //     });
-    //   } else {
-    //     dispatchForm({
-    //       type: 'SET',
-    //       payload: { type: id, value: true, isValidInput: true },
-    //     });
-    //     }
-    //     setChecked(isChecked);
-    };
- 
   return (
     <div className='form-check-box-container'>
       <label className='form-check-box'>

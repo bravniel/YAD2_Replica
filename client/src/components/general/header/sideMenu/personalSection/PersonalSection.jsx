@@ -1,7 +1,10 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
-import { deleteUserFromCookie, getUserFromCookie } from "../../../../../cookies/cookies";
-import IconedNavLink from "../../iconedNavLink/IcondNavLink";
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import {
+  deleteUserFromCookie,
+  getUserFromCookie,
+} from '../../../../../cookies/cookies';
+import IconedNavLink from '../../iconedNavLink/IcondNavLink';
 import { BiUser } from 'react-icons/bi';
 
 export default function PersonalSection({ handleBurgerButtonClick }) {
@@ -14,12 +17,13 @@ export default function PersonalSection({ handleBurgerButtonClick }) {
   return (
     <div className='personal'>
       <IconedNavLink
-        to={user ? 'me' : 'login'}
+        to={user ? '/personal/profile' : 'login'}
         text={user ? `${user.firstName} ${user.lastName}` : 'התחברות'}
         onClick={handleBurgerButtonClick}>
         {user ? (
           <div className='initials-container'>
-            {user.firstName[0]}{user.lastName[0]}
+            {user.firstName[0]}
+            {user.lastName[0]}
           </div>
         ) : (
           <div className='initials-container-icon'>
@@ -27,7 +31,7 @@ export default function PersonalSection({ handleBurgerButtonClick }) {
           </div>
         )}
         {user && (
-          <Link className='me' to={'me'}>
+          <Link className='me' to={'/personal/profile'}>
             לאזור האישי
           </Link>
         )}
@@ -41,7 +45,6 @@ export default function PersonalSection({ handleBurgerButtonClick }) {
           />
         </div>
       )}
-      {/* <button>התחברות</button> */}
     </div>
   );
 }

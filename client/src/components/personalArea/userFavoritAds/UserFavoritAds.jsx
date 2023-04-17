@@ -1,17 +1,11 @@
-// UserFavoritAds
-
-import React, { useContext, useEffect, useReducer, useState } from 'react';
-import { getFavoriteAds, getUserAds } from '../../../api/userRequests';
+import React, { useContext, useEffect, useState } from 'react';
+import { getFavoriteAds } from '../../../api/userRequests';
 import { UserContext } from '../../../context/UserContext';
-import { WindowContext } from '../../../context/WindowContext';
 import AssetsList from '../../realestate/forSell/assetsList/AssetsList';
-import PersonalAreaSideBar from '../personalAreaSideBar/PersonalAreaSideBar';
 
 export default function UserFavoritAds() {
-  const { windowWidth } = useContext(WindowContext);
   const [realEstates, setRealEstates] = useState([]);
-  const { user, dispatchUser, userFavoriteAds, dispatchUserFavoriteAds } =
-    useContext(UserContext);
+  const { user, userFavoriteAds } = useContext(UserContext);
 
   useEffect(() => {
     getData();
@@ -20,7 +14,6 @@ export default function UserFavoritAds() {
   function getData() {
     getFavoriteAds(user.token).then((data) => {
       setRealEstates(data);
-      //   setTotalPages(Math.ceil(data.numOfPages / 5));
     });
   }
 

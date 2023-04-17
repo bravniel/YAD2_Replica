@@ -18,7 +18,7 @@ const FormInput = ({ data }) => {
   const [isNoValue, setIsNoValue] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [showClear, setShowClear] = useState(false);
-console.log('inputdata:', name);
+  console.log('inputdata:', name);
   const onClearClickHandler = () => {
     document.getElementById(name).value = '';
     dispatchForm({

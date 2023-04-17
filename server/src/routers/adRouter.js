@@ -11,12 +11,6 @@ router.post('/user/liked-ad',userAuth, async (req, res, next) => {
   try {
     const adId = req.body.adId;
     const uuid = uuidv4();
-    // let keys = 'favoriteAdId';
-    // let values = "N'" + uuid + "'";
-    // for (const key in req.body) {
-    //   keys += ', ' + key;
-    //   values += ", N'" + req.body[key] + "'";
-    // }
     let queryString = `INSERT INTO FavoriteAds (favoriteAdId, userId, adId) VALUES (N'${uuid}', N'${req.user}', N'${adId}')`;
     console.log('queryString: ', queryString);
     const result = await sql.query(queryString);
@@ -45,8 +39,6 @@ router.get('/user/liked-ads', userAuth, async (req, res, next) => {
     const ads = await sql.query(
       `SELECT p.*, pr.* FROM Property p JOIN Props pr ON p.propertyId = pr.propertyId JOIN FavoriteAds fa ON p.propertyId = fa.adId WHERE fa.userId = N'${req.user}'`
     );
-    const finalAds = ads.recordsets[0];
-    // if (finalAds.length === 0) throw new Error('No liked ads in DB.');
     res.send(ads.recordset);
   } catch (error) {
     return next(error);
@@ -58,8 +50,6 @@ router.get('/user/all-liked-ads', userAuth, async (req, res, next) => {
     const ads = await sql.query(
       `SELECT adId FROM FavoriteAds WHERE userId = N'${req.user}'`
     );
-    const finalAds = ads.recordsets[0];
-    // if (finalAds.length === 0) throw new Error('No liked ads in DB.');
     res.send(ads.recordset);
   } catch (error) {
     return next(error);

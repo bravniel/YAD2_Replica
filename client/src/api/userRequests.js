@@ -34,14 +34,12 @@ export const setUserData = async (token, userInfo) => {
 
 export const publishRealestate = async (credentials) => {
   const routeUrl = apiUrl + '/realestate/asset';
-  // const headers = { Authorization: 'Bearer ' + token };
   const newAd = await axios.post(routeUrl, credentials);
   return newAd.data;
 };
 
 export const getInitialRealEstates = async (offset) => {
   const routeUrl = apiUrl + '/realestate/';
-  // const headers = { Authorization: 'Bearer ' + token };
   const allAssets = await axios.get(routeUrl);
   return allAssets.data;
 };

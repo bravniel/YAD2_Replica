@@ -3,6 +3,9 @@
   height: 100vh;
   width: 100%;
   display: flex;
+  z-index: 20;
+  position: relative;
+
   .personal-area-body {
     width: 80%;
     height: calc(100vh - 5rem);
@@ -14,8 +17,19 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    align-items: center;
+    z-index: 10;
+
+    @media (max-width: 1020px) {
+      width: 100%;
+      margin-right: 0;
+    }
     .edit-section-title {
       font-size: 1.5rem;
+      text-align: right;
+      display: flex;
+      width: 100%;
+      max-width: 65rem;
     }
     .personal-area-form {
       box-shadow: 0 2px 25px hsla(0, 0%, 42%, 0.088);
@@ -25,9 +39,15 @@
       background-color: #ffffff;
       padding: 2rem 1rem;
       display: flex;
-      //   justify-content: center;
-      // gap: 1rem;
       width: 100%;
+      max-width: 65rem;
+
+      @media (max-width: 1020px) {
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
+        gap: 1rem;
+      }
       .name-icon {
         color: #8b42d0;
         border: 2px solid #8b42d0;
@@ -46,10 +66,19 @@
         flex-direction: column;
         width: calc(100% - 11rem);
         gap: 1rem;
+        @media (max-width: 1020px) {
+          width: 100%;
+        }
         .form-title {
           font-weight: 500;
           font-size: 1.2rem;
           text-align: start;
+        }
+        .form-subtitle {
+          font-size: 0.875rem;
+          font-weight: 400;
+
+          color: #999999;
         }
         .edit-inputs-container {
           display: flex;
@@ -58,7 +87,12 @@
         .edit-btn-section {
           display: flex;
           justify-content: flex-end;
-          gap:0.5rem;
+          gap: 0.5rem;
+          padding: 0 0 0 2rem;
+          @media (max-width: 1020px) {
+            justify-content: space-between;
+            padding: 0;
+          }
           button {
             padding: 1rem;
             border: none;

@@ -1,6 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs';
-import { VscChromeClose } from 'react-icons/vsc';
+import React, { useState } from 'react';
 
 const EditInput = ({ data }) => {
   const {
@@ -9,7 +7,6 @@ const EditInput = ({ data }) => {
     label,
     name,
     validationFunc,
-    invalidValueMessage,
     noValueMessage,
     dispatchForm,
     formState,
@@ -44,9 +41,7 @@ const EditInput = ({ data }) => {
         value={formState.values[name]}
       />
       {!formState.isValid[name] && (
-        <div className='invalid-message'>
-          {noValueMessage}
-        </div>
+        <div className='invalid-message'>{noValueMessage}</div>
       )}
     </div>
   );

@@ -6,20 +6,14 @@ import { AiOutlineHeart } from 'react-icons/ai';
 import { BsChatDots } from 'react-icons/bs';
 import { CgSmartphone } from 'react-icons/cg';
 import { BiUser } from 'react-icons/bi';
-import {
-  deleteUserFromCookie,
-  getUserFromCookie,
-} from '../../../../../cookies/cookies';
+import { deleteUserFromCookie } from '../../../../../cookies/cookies';
 import { UserContext } from '../../../../../context/UserContext';
 import FavoriteAdsDropdown from './favoriteAdsDropdown/FavoriteAdsDropdown';
+import { WindowContext } from '../../../../../context/WindowContext';
 
-export default function MainNavBarLeftButtons({
-  isScreenWidthLessThan1500px,
-  isScreenWidthLessThan1260px,
-  isScreenWidthLessThan880px,
-}) {
+export default function MainNavBarLeftButtons() {
+  const { windowWidth } = useContext(WindowContext);
   const location = useLocation();
-  // const user = getUserFromCookie();
   const [dropdown, setDropdown] = useState(false);
   const [favoritAdsDropdown, setFavoritAdsDropdown] = useState(false);
   const handleDropdownClick = () => {
@@ -30,16 +24,13 @@ export default function MainNavBarLeftButtons({
   const { user, dispatchUser, userFavoriteAds, dispatchUserFavoriteAds } =
     useContext(UserContext);
   return (
-    <div
-      className={!isScreenWidthLessThan880px ? 'side-wrapper' : 'side-wrapper'}>
-      {isScreenWidthLessThan1260px && (
-        <IconedNavLink to={'chat'} icon={BsChatDots} />
-      )}
-      {!isScreenWidthLessThan880px && (
+    <div className={windowWidth > 880 ? 'side-wrapper' : 'side-wrapper'}>
+      {windowWidth < 1260 && <IconedNavLink to={'chat'} icon={BsChatDots} />}
+      {windowWidth > 880 && (
         <IconedNavLink
           to={'alert'}
           text={'התראות'}
-          isDisplayText={!isScreenWidthLessThan1500px}
+          isDisplayText={windowWidth > 1500}
           icon={TbBellRinging2}
         />
       )}
@@ -52,7 +43,7 @@ export default function MainNavBarLeftButtons({
             <IconedNavLink
               to={'/personal/favorites'}
               text={'מודעות שאהבתי'}
-              isDisplayText={!isScreenWidthLessThan1500px}
+              isDisplayText={windowWidth > 1500}
               icon={AiOutlineHeart}
             />
             {userFavoriteAds.length > 0 && (
@@ -69,20 +60,7 @@ export default function MainNavBarLeftButtons({
           </div>
         </li>
       </ul>
-      {/* <div className='favorite-ads-container'>
-        <IconedNavLink
-          to={'/personal/favorites'}
-          text={'מודעות שאהבתי'}
-          isDisplayText={!isScreenWidthLessThan1500px}
-          icon={AiOutlineHeart}
-        />
-        {userFavoriteAds.length > 0 && (
-          <div className='favorite-ads-count-icon'>
-            {userFavoriteAds.length}
-          </div>
-        )}
-      </div> */}
-      {!isScreenWidthLessThan880px && (
+      {windowWidth > 880 && (
         <ul className='nav-bar'>
           <li
             className='nav-bar-item'
@@ -91,7 +69,7 @@ export default function MainNavBarLeftButtons({
             <IconedNavLink
               to={user ? 'me' : 'login'}
               text={user ? `${user.firstName} ${user.lastName}` : 'התחברות'}
-              isDisplayText={!isScreenWidthLessThan1500px}>
+              isDisplayText={windowWidth > 1500}>
               {user ? (
                 <div className='initials-container'>
                   {user.firstName[0]}
@@ -126,7 +104,7 @@ export default function MainNavBarLeftButtons({
       )}
       <NavLink to={'/publish'} className='new-ad'>
         <div className='new-ad-link'>
-          {isScreenWidthLessThan880px ? '+' : '+ פרסום מודעה חדשה'}
+          {windowWidth < 880 ? '+' : '+ פרסום מודעה חדשה'}
         </div>
       </NavLink>
     </div>

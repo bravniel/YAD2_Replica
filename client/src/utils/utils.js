@@ -553,5 +553,3 @@ export const inputProperties = {
     required: false,
   },
 };
-
-
